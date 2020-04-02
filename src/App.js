@@ -5,6 +5,12 @@ import Form from './components/Form';
 function App() {
   const [presupuesto, setPresupuesto] = useState(0);
   const [restante, setRestante] = useState(0);
+  const [mostrarPregunta, setMostrarPregunta] = useState(true);
+  const [gastos, setGastos] = useState([]);
+
+  const agregarNuevoGasto = gasto => {
+    setGastos([...gastos, gasto]);
+  };
 
   return (
     <div className="container">
@@ -12,19 +18,22 @@ function App() {
         <h1>Gasto semanal</h1>
 
         <div className="contenido-principal contenido">
-          <Pregunta
+          { mostrarPregunta ?
+          (<Pregunta
             setPresupuesto={setPresupuesto}
             setRestante={setRestante}
-          />
-
+            setMostrarPregunta={setMostrarPregunta}
+          />) : (
           <div className="row">
             <div className="one-half column">
-              <Form />
+              <Form
+                agregarNuevoGasto={agregarNuevoGasto}
+              />
             </div>
             <div className="one-half column">
               2
-            </div> 
-          </div>
+            </div>
+          </div>)}
         </div>
       </header>
     </div>
