@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Pregunta from './components/Pregunta';
 import Form from './components/Form';
 import Listado from './components/Listado';
+import ControlPresupuesto from './components/ControlPresupuesto';
 
 function App() {
   const [presupuesto, setPresupuesto] = useState(0);
@@ -34,6 +35,10 @@ function App() {
             <div className="one-half column">
               <Listado
                 gastos={gastos}
+              />
+              <ControlPresupuesto
+                presupuesto={presupuesto}
+                restante={restante}
               />
             </div>
           </div>)}
